@@ -12,24 +12,19 @@
 </head>
 <body>
   <div class="container-scroller d-flex">
-    
-    <!-- Sidebar -->
+
     @include('layouts.partials.sidebar')
 
     <div class="container-fluid page-body-wrapper">
-      
-      <!-- Navbar -->
-      @include('layouts.partials.navbar')
 
-      <div class="main-panel">
-          
-          <!-- Konten -->
+      <div class="main-panel w-100">
+
+        <div class="content-wrapper pt-5">
+
           @yield('content')
           
         </div>
-        
-        <!-- Footer -->
-        @include('layouts.partials.footer')
+
 
       </div>
     </div>
