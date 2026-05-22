@@ -22,7 +22,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="pages/forms/basic_elements.html">
+          <a class="nav-link" href="{{ route('kategori.index') }}">
             <i class="mdi mdi-view-headline menu-icon"></i>
             <span class="menu-title">Kategori</span>
           </a>

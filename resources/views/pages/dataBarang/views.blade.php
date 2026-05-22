@@ -60,10 +60,10 @@
                   <a href="{{ route('barang.edit', $barang->id) }}" class="btn btn-warning btn-sm" title="Edit">
                     <i class="mdi mdi-pencil"></i>
                   </a>
-                  <form action="{{ route('barang.destroy', $barang->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus barang ini?');">
+                  <form action="{{ route('barang.destroy', $barang->id) }}" method="POST" id="delete-form-{{ $barang->id }}" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm" title="Hapus">
+                    <button type="button" class="btn btn-danger btn-sm btn-delete" data-id="{{ $barang->id }}" data-name="{{ $barang->nama_barang }}" title="Hapus">
                       <i class="mdi mdi-delete"></i>
                     </button>
                   </form>

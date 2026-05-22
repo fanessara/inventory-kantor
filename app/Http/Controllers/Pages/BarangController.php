@@ -7,6 +7,7 @@ use App\Models\Items;
 use App\Models\Categories;
 use App\Models\Rooms;
 use Illuminate\Support\Facades\Storage;
+use SweetAlert2\Laravel\Swal;
 use Illuminate\Http\Request;
 
 class BarangController extends Controller
@@ -63,7 +64,25 @@ class BarangController extends Controller
             'foto'        => $fotoPath,
         ]);
 
-        return redirect()->route('barang.index')->with('success', 'Data barang berhasil ditambahkan!');
+        // Alert Berhasil
+        Swal::fire([
+            'title' => 'Kategori berhasil ditambahkan',
+            'toast' => true,
+            'position' => 'top-end',
+            'icon' => 'success',
+            'background' => '#10b981',
+            'color' => 'white',
+            'iconColor' => 'white',
+            'showConfirmButton' => false,
+            'timer' => 3000,
+            'timerProgressBar' => true,
+            'didOpen' => '(toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }',
+        ]);
+
+        return redirect()->route('barang.index');
     }
 
 
@@ -117,7 +136,25 @@ class BarangController extends Controller
             'deskripsi'   => $request->deskripsi,
         ]);
 
-        return redirect()->route('barang.index')->with('success', 'Data Barang berhasil diperbarui!');
+        // Alert Berhasil
+        Swal::fire([
+            'title' => 'Kategori berhasil diperbarui',
+            'toast' => true,
+            'position' => 'top-end',
+            'icon' => 'success',
+            'background' => '#10b981',
+            'color' => 'white',
+            'iconColor' => 'white',
+            'showConfirmButton' => false,
+            'timer' => 3000,
+            'timerProgressBar' => true,
+            'didOpen' => '(toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }',
+        ]);
+
+        return redirect()->route('barang.index');
     }
 
     //  Logic Hapus Barang
@@ -130,6 +167,24 @@ class BarangController extends Controller
                 Storage::disk('public')->delete($barang->foto);
             }
         
+            // Alert Berhasil
+        Swal::fire([
+            'title' => 'Kategori berhasil dihapus',
+            'toast' => true,
+            'position' => 'top-end',
+            'icon' => 'success',
+            'background' => '#10b981',
+            'color' => 'white',
+            'iconColor' => 'white',
+            'showConfirmButton' => false,
+            'timer' => 3000,
+            'timerProgressBar' => true,
+            'didOpen' => '(toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }',
+        ]);
+
         $barang->delete();
 
         return redirect()->route('barang.index')->with('success', 'Data barang berhasil dihapus');
