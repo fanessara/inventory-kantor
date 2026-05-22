@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pages\BarangController;
 use App\Http\Controllers\Pages\KategoriController;
 use App\Http\Controllers\Pages\RuanganController;
+use App\Http\Controllers\Pages\PeminjamController;
 
 Route::get('/', function () {
     return view('pages.dashboard');
@@ -44,4 +45,16 @@ Route::put('/ruangan/{id}', [RuanganController::class, 'update'])->name('ruangan
 // Hapus
 Route::delete('/ruangan/{id}', [RuanganController::class, 'destroy'])->name('ruangan.destroy');
 // End Rute Ruangan
+
+// Start Rute Peminjam
+Route::get('/peminjam', [PeminjamController::class, 'index'])->name('peminjam.index');
+// Create
+Route::get('/peminjam/tambah', [PeminjamController::class, 'create'])->name('peminjam.create');
+Route::post('/peminjam', [PeminjamController::class, 'store'])->name('peminjam.store');
+// Edit
+Route::get('/peminjam/{id}/edit', [PeminjamController::class, 'edit'])->name('peminjam.edit');
+Route::put('/peminjam/{id}', [PeminjamController::class, 'update'])->name('peminjam.update');
+// Hapus
+Route::delete('/peminjam/{id}', [PeminjamController::class, 'destroy'])->name('peminjam.destroy');
+// End Rute Peminjam
 
