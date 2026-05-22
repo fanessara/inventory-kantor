@@ -71,15 +71,16 @@
           </div>
 
           <div class="form-group">
-            <label>Foto Barang</label>
-            <input type="file" name="foto" class="file-upload-default" accept="image/*" style="display: none;">
-            <div class="input-group col-xs-12">
-              <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto (Maks 2MB)">
-              <span class="input-group-append">
-                <button class="file-upload-browse btn btn-primary" type="button" onclick="document.querySelector('input[name=foto]').click()">Upload</button>
-              </span>
+            <label for="foto">Foto Barang (Opsional)</label>
+            
+            <!-- Input File -->
+            <input type="file" class="form-control" id="foto" name="foto" accept="image/*" onchange="previewImage()">
+            
+            <!-- Tempat Munculin Preview Foto -->
+            <div class="mt-2">
+                <img id="img-preview" src="" alt="Preview Foto" class="img-fluid" style="display: none; max-width: 200px; border-radius: 8px; border: 1px solid #ddd; padding: 4px;">
             </div>
-          </div>
+        </div>
 
           <button type="submit" class="btn btn-primary mr-2">Simpan Data</button>
           <a href="{{ route('barang.index') }}" class="btn btn-light">Batal</a>
@@ -89,3 +90,24 @@
   </div>
 </div>
 @endsection
+
+@push('scripts')
+  <script>
+    function previewImage() {
+        const image = document.querySelector('#foto');
+        const imgPreview = document.querySelector('#img-preview');
+
+        // Munculin tag <img> yang tadinya di-hidden
+        imgPreview.style.display = 'block';
+
+        // Baca data file yang dipilih
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        // Ganti src gambar dengan file yang dipilih
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
+@endpush

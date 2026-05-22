@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <style>
@@ -52,6 +53,7 @@
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset('js/template.js') }}"></script>
+  <script src="sweetalert2.min.js"></script>
   <!-- Script Global untuk Tombol Hapus (SweetAlert) -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -69,16 +71,16 @@
                     html: "Data <strong>" + itemName + "</strong> akan dihapus secara permanen!",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#ef4444', // Merah elegan untuk hapus
-                    cancelButtonColor: '#6b7280',  // Abu-abu untuk batal
+                    confirmButtonColor: '#ef4444',
+                    cancelButtonColor: '#6b7280',
                     confirmButtonText: '<i class="mdi mdi-delete mr-1"></i> Ya, Hapus!',
                     cancelButtonText: '<i class="mdi mdi-close mr-1"></i> Batal',
-                    reverseButtons: true, // Balik posisi tombol (Hapus di kanan, Batal di kiri)
+                    reverseButtons: true,
                     customClass: {
                         confirmButton: 'btn btn-danger mx-1',
                         cancelButton: 'btn btn-secondary mx-1'
                     },
-                    buttonsStyling: false // Matikan style bawaan swal biar pakai class bootstrap dari template lu
+                    buttonsStyling: false
                 }).then((result) => {
                     // Kalau user klik "Ya, Hapus!"
                     if (result.isConfirmed) {
@@ -95,6 +97,7 @@
   
   <!-- Panggil Notifikasi Toast -->
   {{-- @include('layouts.partials.alert') --}}
+  
   @include('sweetalert2::index')
 </body>
 </html>

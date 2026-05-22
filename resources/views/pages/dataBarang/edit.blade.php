@@ -1,4 +1,4 @@
-@extends('layouts.app-sidebar')
+@extends('layouts.app-crud')
 
 @section('content')
 <div class="row">
@@ -75,26 +75,21 @@
           </div>
 
           <div class="form-group">
-            <label>Foto Barang (Biarkan kosong jika tidak ingin mengubah foto)</label>
-            <input type="file" name="foto" class="file-upload-default" accept="image/*" style="display: none;">
-            <div class="input-group col-xs-12">
-              <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Foto Baru (Opsional)">
-              <span class="input-group-append">
-                <button class="file-upload-browse btn btn-primary" type="button" onclick="document.querySelector('input[name=foto]').click()">Upload Baru</button>
-              </span>
-            </div>
+            <label for="foto">Foto Barang Sebelumnya</label>
+            
+            <!-- Tampilkan Preview Foto Lama (Jika Ada) -->
             @if($barang->foto)
-              <div class="mt-2">
-                <small class="text-muted">Foto saat ini:</small><br>
-                <img src="{{ asset('storage/' . $barang->foto) }}" alt="Foto Barang" class="img-thumbnail mt-1" width="150">
-              </div>
+                <div class="mb-2">
+                    <img src="{{ asset('storage/' . $barang->foto) }}" alt="Foto {{ $barang->nama_barang }}" width="150" style="border-radius: 8px; border: 1px solid #ddd; padding: 4px;">
+                </div>
+                <small class="text-danger d-block mb-2">* Biarkan kosong jika tidak ingin mengubah foto</small>
+            @else
+                <small class="text-muted d-block mb-2">Belum ada foto. Silakan upload foto baru.</small>
             @endif
-          </div>
 
-          <div class="form-group">
-            <label for="deskripsi">Deskripsi</label>
-            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="4">{{ old('deskripsi', $barang->deskripsi) }}</textarea>
-          </div>
+            <!-- Input File Baru -->
+            <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
+        </div>
 
           <button type="submit" class="btn btn-warning mr-2">Update Data</button>
           <a href="{{ route('barang.index') }}" class="btn btn-light">Batal</a>

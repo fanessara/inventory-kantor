@@ -46,6 +46,12 @@ return [
             'throw' => false,
             'report' => false,
         ],
+        'barang' => [
+            'driver' => 'local',
+            'root' => storage_path('app/barang'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',

@@ -14,7 +14,7 @@ class BarangController extends Controller
 {
     public function index()
     {
-        $barangs = Items::with(['kategori:id, nama_kategori', 'ruangan:id, nama_ruangan'])
+        $barangs = Items::with(['kategori:id,nama_kategori', 'ruangan:id,nama_ruangan'])
                     ->latest()
                     ->paginate(10);
 
@@ -34,7 +34,7 @@ class BarangController extends Controller
         // Validasi input data masuk
 
         $request->validate([
-            'kode_barang' => 'required|unique:barang,kode_barang',
+            'kode_barang' => 'required|unique:items,kode_barang',
             'nama_barang' => 'required',
             'kategori_id' => 'required',
             'ruangan_id'  => 'required',
@@ -104,7 +104,7 @@ class BarangController extends Controller
         $barang = Items::findOrFail($id);
 
         $request->validate([
-            'kode_barang' => 'required|unique:barang,kode_barang,' . $barang->id,
+            'kode_barang' => 'required|unique:items,kode_barang,' . $barang->id,
             'nama_barang' => 'required',
             'kategori_id' => 'required',
             'ruangan_id'  => 'required',

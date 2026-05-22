@@ -43,5 +43,5 @@ Route::get('/ruangan/{id}/edit', [RuanganController::class, 'edit'])->name('ruan
 Route::put('/ruangan/{id}', [RuanganController::class, 'update'])->name('ruangan.update');
 // Hapus
 Route::delete('/ruangan/{id}', [RuanganController::class, 'destroy'])->name('ruangan.destroy');
-// End Rute Kategori
+// End Rute Ruangan
 

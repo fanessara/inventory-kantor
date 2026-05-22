@@ -28,6 +28,6 @@ class ReturnGoods extends Model
 
     public function peminjaman()
     {
-        return $this->belongsTo(ReturnGoods::class);
+        return $this->belongsTo(BorrowingGoods::class);
     }
 }
