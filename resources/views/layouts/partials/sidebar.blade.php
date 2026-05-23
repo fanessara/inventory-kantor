@@ -34,7 +34,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">
+          <a class="nav-link" href="{{ route('peminjam.index') }}">
             <i class="mdi mdi-grid-large menu-icon"></i>
             <span class="menu-title">Peminjam</span>
           </a>
