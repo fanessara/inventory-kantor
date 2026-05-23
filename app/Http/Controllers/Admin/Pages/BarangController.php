@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Items;
@@ -18,7 +18,7 @@ class BarangController extends Controller
                     ->latest()
                     ->paginate(10);
 
-        return view('pages.dataBarang.views', compact('barangs'));
+        return view('admin.pages.dataBarang.views', compact('barangs'));
     }
 
     // Logic create Barang
@@ -27,7 +27,7 @@ class BarangController extends Controller
         $kategoris = Categories::select('id', 'nama_kategori')->get();
         $ruangans = Rooms::select('id', 'nama_ruangan')->get();
 
-        return view('pages.dataBarang.create', compact('kategoris', 'ruangans'));
+        return view('admin.pages.dataBarang.create', compact('kategoris', 'ruangans'));
     }
     public function store(Request $request)
     {
@@ -93,7 +93,7 @@ class BarangController extends Controller
         $kategoris = Categories::select('id', 'nama_kategori')->get();
         $ruangans = Rooms::select('id', 'nama_ruangan')->get();
 
-        return view('pages.dataBarang.edit', compact('barang', 'kategoris', 'ruangans'));
+        return view('admin.pages.dataBarang.edit', compact('barang', 'kategoris', 'ruangans'));
     }
     public function update(Request $request, $id)
     {

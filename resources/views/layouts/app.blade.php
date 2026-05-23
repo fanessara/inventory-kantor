@@ -53,7 +53,6 @@
   <script src="{{ asset('vendors/js/vendor.bundle.base.js') }}"></script>
   <script src="{{ asset('vendors/chart.js/Chart.min.js') }}"></script>
   <script src="{{ asset('js/template.js') }}"></script>
-  <script src="sweetalert2.min.js"></script>
   <!-- Script Global untuk Tombol Hapus (SweetAlert) -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {

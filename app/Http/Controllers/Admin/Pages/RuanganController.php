@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Rooms;
@@ -13,12 +13,12 @@ class RuanganController extends Controller
 public function index()
     {
         $ruangans = Rooms::latest()->paginate(10);
-        return view('pages.ruangan.views', compact('ruangans'));
+        return view('admin.pages.ruangan.views', compact('ruangans'));
     }
 
     public function create()
     {
-        return view('pages.ruangan.create');
+        return view('admin.pages.ruangan.create');
     }
 
     public function store(Request $request)
@@ -56,7 +56,7 @@ public function index()
     public function edit($id)
     {
         $ruangan = Rooms::findOrFail($id);
-        return view('pages.ruangan.edit', compact('ruangan'));
+        return view('admin.pages.ruangan.edit', compact('ruangan'));
     }
 
     public function update(Request $request, $id)

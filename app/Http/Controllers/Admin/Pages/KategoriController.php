@@ -1,45 +1,42 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\Admin\Pages;
 
 use App\Http\Controllers\Controller;
-use App\Models\Borrowers;
+use App\Models\Categories;
 use SweetAlert2\Laravel\Swal;
 use Illuminate\Http\Request;
 
-class PeminjamController extends Controller
+class KategoriController extends Controller
 {
-    public function index()
+    public function index() 
     {
-        $peminjams = Borrowers::latest()->paginate(10);
+        $kategoris = Categories::latest()->paginate(10);
 
-        return view('pages.peminjam.views', compact('peminjams'));
+        return view('admin.pages.kategori.views', compact('kategoris'));
     }
 
+    // Logic buat kategori
     public function create()
     {
-        return view('pages.peminjam.create');
+        return view('admin.pages.kategori.create');
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $request->validate([
-            'nama'    => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'no_hp'   => 'required|numeric',
-            'alamat'  => 'required|string',
+            'nama_kategori' => 'required|unique:categories,nama_kategori'
+        ], [
+            'nama_kategori' => 'Nama kategori sudah ada.'
         ]);
 
-        Borrowers::create([
-            'nama'    => $request->nama,
-            'jabatan' => $request->jabatan,
-            'no_hp'   => $request->no_hp,
-            'alamat'  => $request->alamat,
+        Categories::create([
+            'nama_kategori' => $request->nama_kategori
         ]);
-
+        
         // Alert Berhasil
         Swal::fire([
-            'title' => 'Peminjam berhasil ditambahkan',
+            'title' => 'Kategori berhasil ditambahkan',
             'toast' => true,
             'position' => 'top-end',
             'icon' => 'success',
@@ -54,35 +51,28 @@ class PeminjamController extends Controller
                 toast.onmouseleave = Swal.resumeTimer;
             }',
         ]);
-        return redirect()->route('peminjam.index');
+
+        return redirect()->route('kategori.index');
     }
 
+    // Logic edit Kategori
     public function edit($id)
     {
-        $peminjam = Borrowers::findOrFail($id);
-        return view('pages.peminjam.edit', compact('peminjam'));
+        $kategori = Categories::findOrFail($id);
+        return view('admin.pages.kategori.edit', compact('kategori'));
     }
 
     public function update(Request $request, $id)
     {
-        $peminjam = Borrowers::findOrFail($id);
+        $kategori = Categories::findOrFail($id);
 
         $request->validate([
-            'nama'    => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'no_hp'   => 'required|numeric',
-            'alamat'  => 'required|string',
+            'nama_kategori' => 'required|unique:categories,nama_kategori,' . $kategori->id
         ]);
 
-        $peminjam->update([
-            'nama'    => 'required|string|max:255',
-            'jabatan' => 'required|string|max:255',
-            'no_hp'   => 'required|numeric',
-            'alamat'  => 'required|string',
-        ]);
-
+        // Alert Berhasil
         Swal::fire([
-            'title' => 'Data Peminjam berhasil diperbarui',
+            'title' => 'Kategori berhasil diperbarui',
             'toast' => true,
             'position' => 'top-end',
             'icon' => 'success',
@@ -98,16 +88,17 @@ class PeminjamController extends Controller
             }',
         ]);
 
-        return redirect()->route('peminjam.index');
+        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diedit');
     }
 
+    // Logic hapus Kategori
     public function destroy($id)
     {
-        $peminjam = Borrowers::findOrFail($id);
-        $peminjam->delete();
+        $kategori = Categories::findOrFail($id);
+        $kategori->delete();
 
         Swal::fire([
-            'title' => 'Data Peminjam berhasil dihapus',
+            'title' => 'Kategori berhasil dihapus',
             'toast' => true,
             'position' => 'top-end',
             'icon' => 'success',
@@ -122,7 +113,7 @@ class PeminjamController extends Controller
                 toast.onmouseleave = Swal.resumeTimer;
             }',
         ]);
-
-        redirect()->route('peminjam.index');
+        
+        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil dihapus');
     }
 }

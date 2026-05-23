@@ -63,9 +63,9 @@
     </button>
   </div>
   <div class="navbar-menu-wrapper navbar-search-wrapper d-none d-lg-flex align-items-center">
-    <ul class="navbar-nav mr-lg-2">
-      <li class="nav-item nav-search d-none d-lg-block">
-        <div class="input-group">
+    <ul class="navbar-nav mr-lg-2 flex-grow-1">
+      <li class="nav-item nav-search d-none d-lg-block w-100">
+        <div class="input-group w-100">
           <input type="text" class="form-control" placeholder="Cari barang, kategori, atau ruangan..." aria-label="search" aria-describedby="search">
         </div>
       </li>
@@ -74,17 +74,20 @@
       <li class="nav-item nav-profile dropdown">
         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
           <img src="{{ asset('images/faces/face5.jpg') }}" alt="profile"/>
-          <span class="nav-profile-name">Administrator</span>
+          <span class="nav-profile-name">{{ ucwords(strtolower(Auth::user()->name)) }}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
           <a class="dropdown-item">
             <i class="mdi mdi-settings text-primary"></i>
             Settings
           </a>
-          <a class="dropdown-item">
+          <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             <i class="mdi mdi-logout text-primary"></i>
             Logout
           </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+          </form>
         </div>
       </li>
     </ul>
