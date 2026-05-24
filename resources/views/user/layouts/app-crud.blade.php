@@ -13,7 +13,7 @@
 <body>
   <div class="container-scroller d-flex">
 
-    @include('layouts.partials.sidebar')
+    @include('user.layouts.partials.sidebar')
 
     <div class="container-fluid page-body-wrapper">
 

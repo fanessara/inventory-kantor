@@ -28,12 +28,12 @@
   <div class="container-scroller d-flex">
     
     <!-- Sidebar -->
-    @include('layouts.partials.sidebar')
+    @include('admin.layouts.partials.sidebar')
 
     <div class="container-fluid page-body-wrapper">
       
       <!-- Navbar -->
-      @include('layouts.partials.navbar')
+      @include('admin.layouts.partials.navbar')
 
       <div class="main-panel">
           
@@ -44,7 +44,7 @@
         </div>
         
         <!-- Footer -->
-        @include('layouts.partials.footer')
+        @include('admin.layouts.partials.footer')
         
       </div>
     </div>
