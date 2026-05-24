@@ -34,7 +34,7 @@ class BorrowingGoods extends Model
 
     public function peminjam()
     {
-        return $this->belongsTo(Borrowers::class);
+        return $this->belongsTo(User::class);
     }
 
     public function pengembalian()
