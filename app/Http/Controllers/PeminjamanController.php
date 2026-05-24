@@ -13,7 +13,9 @@ class PeminjamanController extends Controller
      */
     public function index()
     {
-        //
+        $peminjaman = Peminjaman::latest()->get();
+
+        return view('peminjaman.index', compact('peminjaman'));
     }
 
     /**
@@ -80,7 +82,32 @@ class PeminjamanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $peminjaman = Peminjaman::findOrFail($id);
+
+    // CEK JIKA SUDAH DIKEMBALIKAN
+    if($peminjaman->status == 'Dikembalikan'){
+
+        return back()->with('error', 'Barang sudah dikembalikan');
+
+    }
+
+    // UPDATE STATUS
+    $peminjaman->update([
+
+        'status' => 'Dikembalikan',
+        'tanggal_kembali' => now()
+
+    ]);
+
+    // KEMBALIKAN STOK
+    $barang = $peminjaman->barang;
+
+    $barang->stok += $peminjaman->jumlah;
+
+    $barang->save();
+
+    return redirect('/peminjaman')
+           ->with('success', 'Barang berhasil dikembalikan');
     }
 
     /**

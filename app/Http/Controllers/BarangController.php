@@ -4,14 +4,39 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class BarangController extends Controller
 {
-    public function index()
-    {
-        $barangs = Barang::latest()->get();
-        return view('barang.index',compact('barangs'));
+    public function index(Request $request)
+{
+    $query = Barang::query();
+
+    // SEARCH NAMA BARANG
+    if($request->search){
+
+        $query->where('nama_barang', 'like', '%' . $request->search . '%');
+
     }
+
+    // FILTER KATEGORI
+    if($request->kategori){
+
+        $query->where('kategori', $request->kategori);
+
+    }
+
+    // FILTER KONDISI
+    if($request->kondisi){
+
+        $query->where('kondisi', $request->kondisi);
+
+    }
+
+    $barangs = $query->latest()->get();
+
+    return view('barang.index', compact('barangs'));
+}
 
     public function create()
     {
@@ -89,4 +114,23 @@ public function destroy($id)
     return redirect('/barang')
         ->with('success', 'Barang berhasil dihapus');
 }
+
+public function show(string $id)
+{
+    $barang = Barang::with('peminjaman')
+                    ->findOrFail($id);
+
+    return view('barang.show', compact('barang'));
 }
+
+public function exportPdf()
+{
+    $barangs = Barang::all();
+
+    $pdf = Pdf::loadView('barang.pdf', compact('barangs'));
+
+    return $pdf->download('laporan-barang.pdf');
+}
+}
+
+

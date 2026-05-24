@@ -7,6 +7,7 @@
     <div class="d-flex justify-content-between align-items-center mb-4">
 
         <div>
+
             <h3 class="font-weight-bold">
                 Data Barang
             </h3>
@@ -14,9 +15,11 @@
             <p class="text-muted mb-0">
                 Management data inventaris kantor
             </p>
+
         </div>
 
-        <a href="/barang/create" class="btn btn-primary">
+        <a href="/barang/create"
+           class="btn btn-primary">
 
             <i class="mdi mdi-plus"></i>
 
@@ -24,20 +27,122 @@
 
         </a>
 
+        <a href="/barang-pdf"
+   class="btn btn-danger ml-2">
+
+    <i class="mdi mdi-file-pdf"></i>
+
+    Export PDF
+
+</a>
+
     </div>
 
     <!-- CARD -->
+
+    <div class="card mb-4 border-0 shadow-sm">
+
+    <div class="card-body">
+
+        <form action="/barang"
+              method="GET">
+
+            <div class="row">
+
+                <!-- SEARCH -->
+                <div class="col-md-4 mb-3">
+
+                    <input type="text"
+                           name="search"
+                           class="form-control"
+                           placeholder="Cari nama barang..."
+                           value="{{ request('search') }}">
+
+                </div>
+
+                <!-- FILTER KATEGORI -->
+                <div class="col-md-3 mb-3">
+
+                    <select name="kategori"
+                            class="form-control">
+
+                        <option value="">
+                            Semua Kategori
+                        </option>
+
+                        <option value="Elektronik">
+                            Elektronik
+                        </option>
+
+                        <option value="Furniture">
+                            Furniture
+                        </option>
+
+                        <option value="ATK">
+                            ATK
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- FILTER KONDISI -->
+                <div class="col-md-3 mb-3">
+
+                    <select name="kondisi"
+                            class="form-control">
+
+                        <option value="">
+                            Semua Kondisi
+                        </option>
+
+                        <option value="Baik">
+                            Baik
+                        </option>
+
+                        <option value="Rusak">
+                            Rusak
+                        </option>
+
+                        <option value="Perbaikan">
+                            Perbaikan
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- BUTTON -->
+                <div class="col-md-2 mb-3">
+
+                    <button type="submit"
+                            class="btn btn-primary btn-block">
+
+                        Filter
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
     <div class="card dashboard-card">
 
         <div class="card-body">
 
             <div class="table-responsive">
 
-                <table class="table table-hover">
+                <table class="table table-hover align-middle">
 
                     <thead>
 
                         <tr>
+
                             <th>No</th>
                             <th>Kode</th>
                             <th>Nama Barang</th>
@@ -45,7 +150,10 @@
                             <th>Ruangan</th>
                             <th>Stok</th>
                             <th>Kondisi</th>
-                            <th>Aksi</th>
+                            <th width="280">
+                                Aksi
+                            </th>
+
                         </tr>
 
                     </thead>
@@ -56,46 +164,70 @@
 
                         <tr>
 
-                            <td>{{ $loop->iteration }}</td>
+                            <td>
+
+                                {{ $loop->iteration }}
+
+                            </td>
 
                             <td>
+
                                 {{ $barang->kode_barang }}
+
                             </td>
 
                             <td>
-                                {{ $barang->nama_barang }}
+
+                                <strong>
+
+                                    {{ $barang->nama_barang }}
+
+                                </strong>
+
                             </td>
 
                             <td>
+
                                 {{ $barang->kategori }}
+
                             </td>
 
                             <td>
+
                                 {{ $barang->ruangan }}
+
                             </td>
 
                             <td>
+
                                 {{ $barang->stok }}
+
                             </td>
 
                             <td>
 
                                 @if($barang->kondisi == 'Baik')
 
-                                    <span class="badge badge-success">
+                                    <span class="badge bg-success">
+
                                         Baik
+
                                     </span>
 
                                 @elseif($barang->kondisi == 'Rusak')
 
-                                    <span class="badge badge-danger">
+                                    <span class="badge bg-danger">
+
                                         Rusak
+
                                     </span>
 
                                 @else
 
-                                    <span class="badge badge-warning">
+                                    <span class="badge bg-warning text-dark">
+
                                         Perbaikan
+
                                     </span>
 
                                 @endif
@@ -104,34 +236,50 @@
 
                             <td>
 
-    <div class="d-flex">
+                                <div class="d-flex gap-2">
 
-        <a href="/barang/{{ $barang->id }}/edit"
-           class="btn btn-warning btn-sm mr-2">
+                                    <!-- DETAIL -->
+                                    <a href="/barang/{{ $barang->id }}"
+                                       class="btn btn-info btn-sm me-2">
 
-            Edit
+                                        <i class="mdi mdi-eye"></i>
 
-        </a>
+                                        Detail
 
-        <form action="/barang/{{ $barang->id }}"
-              method="POST">
+                                    </a>
 
-            @csrf
-            @method('DELETE')
+                                    <!-- EDIT -->
+                                    <a href="/barang/{{ $barang->id }}/edit"
+                                       class="btn btn-warning btn-sm me-2">
 
-            <button type="submit"
-                    class="btn btn-danger btn-sm"
-                    onclick="return confirm('Hapus barang ini?')">
+                                        <i class="mdi mdi-pencil"></i>
 
-                Hapus
+                                        Edit
 
-            </button>
+                                    </a>
 
-        </form>
+                                    <!-- DELETE -->
+                                    <form action="/barang/{{ $barang->id }}"
+                                          method="POST">
 
-    </div>
+                                        @csrf
+                                        @method('DELETE')
 
-</td>
+                                        <button type="submit"
+                                                class="btn btn-danger btn-sm"
+                                                onclick="return confirm('Hapus barang ini?')">
+
+                                            <i class="mdi mdi-delete"></i>
+
+                                            Hapus
+
+                                        </button>
+
+                                    </form>
+
+                                </div>
+
+                            </td>
 
                         </tr>
 
@@ -139,7 +287,8 @@
 
                         <tr>
 
-                            <td colspan="7" class="text-center">
+                            <td colspan="8"
+                                class="text-center py-4 text-muted">
 
                                 Belum ada data barang
 

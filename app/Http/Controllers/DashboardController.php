@@ -3,36 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Barang;
+use App\Models\Peminjaman;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+        // TOTAL BARANG
         $totalBarang = Barang::count();
 
-        $stokMenipis = Barang::where('stok', '<=', 5)->count();
+        // TOTAL STOK
+        $totalStok = Barang::sum('stok');
 
+        // BARANG RUSAK
         $barangRusak = Barang::where('kondisi', 'Rusak')->count();
 
-        $barangBaik = Barang::where('kondisi', 'Baik')->count();
+        // STOK MENIPIS
+        $stokMenipis = Barang::where('stok', '<=', 5)->count();
 
-        $barangRusakChart = Barang::where('kondisi', 'Rusak')->count();
+        // TOTAL PEMINJAMAN
+        $totalPeminjaman = Peminjaman::count();
 
-        $barangPerbaikan = Barang::where('kondisi', 'Perbaikan')->count();
-
+        // BARANG TERBARU
         $barangTerbaru = Barang::latest()->take(5)->get();
 
         return view('dashboard', compact(
-
             'totalBarang',
-            'stokMenipis',
+            'totalStok',
             'barangRusak',
-            'barangTerbaru',
-
-            'barangBaik',
-            'barangRusakChart',
-            'barangPerbaikan'
-
+            'stokMenipis',
+            'totalPeminjaman',
+            'barangTerbaru'
         ));
     }
 }

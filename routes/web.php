@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BarangController;
@@ -43,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     */
 
     Route::resource('barang', BarangController::class);
+    Route::get('/barang-pdf', [BarangController::class, 'exportPdf']);
 
     
 

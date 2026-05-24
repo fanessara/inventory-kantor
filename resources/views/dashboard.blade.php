@@ -2,44 +2,28 @@
 
 @section('content')
 
-<div class="container-fluid py-4">
+<div class="content-wrapper">
 
     <!-- HEADER -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="mb-4">
 
-        <div>
+        <h2 class="font-weight-bold">
+            Dashboard Inventory Kantor
+        </h2>
 
-            <h2 class="fw-bold">
-                Dashboard Inventory
-            </h2>
-
-            <p class="text-muted mb-0">
-                Selamat datang,
-                {{ Auth::user()->name }}
-            </p>
-
-        </div>
-
-        <div>
-
-            <a href="/barang/create"
-               class="btn btn-primary">
-
-                + Tambah Barang
-
-            </a>
-
-        </div>
+        <p class="text-muted">
+            Monitoring inventaris kantor secara realtime
+        </p>
 
     </div>
 
-    <!-- CARD -->
+    <!-- STATISTIK -->
     <div class="row">
 
-        <!-- TOTAL -->
-        <div class="col-md-4 mb-4">
+        <!-- TOTAL BARANG -->
+        <div class="col-md-3 mb-4">
 
-            <div class="card shadow border-0 rounded-4">
+            <div class="card border-0 shadow-lg rounded-4">
 
                 <div class="card-body">
 
@@ -47,20 +31,21 @@
 
                         <div>
 
-                            <p class="text-muted">
+                            <p class="text-muted mb-1">
                                 Total Barang
                             </p>
 
-                            <h2 class="fw-bold">
+                            <h2 class="font-weight-bold">
+
                                 {{ $totalBarang }}
+
                             </h2>
 
                         </div>
 
-                        <div class="text-primary">
+                        <div class="icon-box bg-primary text-white">
 
-                            <i class="mdi mdi-cube-outline"
-                               style="font-size: 45px;"></i>
+                            <i class="mdi mdi-cube-outline"></i>
 
                         </div>
 
@@ -72,10 +57,10 @@
 
         </div>
 
-        <!-- STOK MENIPIS -->
-        <div class="col-md-4 mb-4">
+        <!-- TOTAL STOK -->
+        <div class="col-md-3 mb-4">
 
-            <div class="card shadow border-0 rounded-4">
+            <div class="card border-0 shadow-lg rounded-4">
 
                 <div class="card-body">
 
@@ -83,20 +68,21 @@
 
                         <div>
 
-                            <p class="text-muted">
-                                Stok Menipis
+                            <p class="text-muted mb-1">
+                                Total Stok
                             </p>
 
-                            <h2 class="fw-bold text-warning">
-                                {{ $stokMenipis }}
+                            <h2 class="font-weight-bold">
+
+                                {{ $totalStok }}
+
                             </h2>
 
                         </div>
 
-                        <div class="text-warning">
+                        <div class="icon-box bg-success text-white">
 
-                            <i class="mdi mdi-alert-circle-outline"
-                               style="font-size: 45px;"></i>
+                            <i class="mdi mdi-package-variant"></i>
 
                         </div>
 
@@ -109,9 +95,9 @@
         </div>
 
         <!-- BARANG RUSAK -->
-        <div class="col-md-4 mb-4">
+        <div class="col-md-3 mb-4">
 
-            <div class="card shadow border-0 rounded-4">
+            <div class="card border-0 shadow-lg rounded-4">
 
                 <div class="card-body">
 
@@ -119,20 +105,58 @@
 
                         <div>
 
-                            <p class="text-muted">
+                            <p class="text-muted mb-1">
                                 Barang Rusak
                             </p>
 
-                            <h2 class="fw-bold text-danger">
+                            <h2 class="font-weight-bold">
+
                                 {{ $barangRusak }}
+
                             </h2>
 
                         </div>
 
-                        <div class="text-danger">
+                        <div class="icon-box bg-danger text-white">
 
-                            <i class="mdi mdi-close-circle-outline"
-                               style="font-size: 45px;"></i>
+                            <i class="mdi mdi-alert-circle"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- STOK MENIPIS -->
+        <div class="col-md-3 mb-4">
+
+            <div class="card border-0 shadow-lg rounded-4">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <p class="text-muted mb-1">
+                                Stok Menipis
+                            </p>
+
+                            <h2 class="font-weight-bold">
+
+                                {{ $stokMenipis }}
+
+                            </h2>
+
+                        </div>
+
+                        <div class="icon-box bg-warning text-white">
+
+                            <i class="mdi mdi-alert"></i>
 
                         </div>
 
@@ -146,126 +170,153 @@
 
     </div>
 
-    <!-- TABLE -->
-    <div class="card shadow border-0 rounded-4">
+    <!-- ROW KEDUA -->
+    <div class="row">
 
-        <div class="card-body">
+        <!-- TOTAL PEMINJAMAN -->
+        <div class="col-md-4 mb-4">
 
-            <div class="d-flex justify-content-between mb-4">
+            <div class="card border-0 shadow-lg rounded-4">
 
-                <div>
+                <div class="card-body">
 
-                    <h4 class="fw-bold">
-                        Barang Terbaru
-                    </h4>
+                    <h5 class="mb-3">
+                        Total Peminjaman
+                    </h5>
 
-                    <p class="text-muted mb-0">
-                        Inventaris terbaru kantor
+                    <h1 class="font-weight-bold text-primary">
+
+                        {{ $totalPeminjaman }}
+
+                    </h1>
+
+                    <p class="text-muted">
+                        Total aktivitas peminjaman barang
                     </p>
 
                 </div>
 
             </div>
 
-            <div class="table-responsive">
+        </div>
 
-                <table class="table align-middle">
+        <!-- BARANG TERBARU -->
+        <div class="col-md-8 mb-4">
 
-                    <thead>
+            <div class="card border-0 shadow-lg rounded-4">
 
-                        <tr>
+                <div class="card-body">
 
-                            <th>Gambar</th>
-                            <th>Kode</th>
-                            <th>Nama Barang</th>
-                            <th>Stok</th>
-                            <th>Kondisi</th>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
 
-                        </tr>
+                        <h5 class="mb-0">
+                            Barang Terbaru
+                        </h5>
 
-                    </thead>
+                        <a href="/barang"
+                           class="btn btn-sm btn-primary">
 
-                    <tbody>
+                            Lihat Semua
 
-                        @foreach($barangTerbaru as $barang)
+                        </a>
 
-                        <tr>
+                    </div>
 
-                            <td>
+                    <div class="table-responsive">
 
-                                @if($barang->gambar)
+                        <table class="table table-hover">
 
-                                    <img src="{{ asset('gambar_barang/' . $barang->gambar) }}"
-                                         width="60"
-                                         height="60"
-                                         style="border-radius: 12px;
-                                                object-fit: cover;">
+                            <thead>
 
-                                @endif
+                                <tr>
 
-                            </td>
+                                    <th>Nama Barang</th>
+                                    <th>Kategori</th>
+                                    <th>Stok</th>
+                                    <th>Kondisi</th>
 
-                            <td>
-                                {{ $barang->kode_barang }}
-                            </td>
+                                </tr>
 
-                            <td>
-                                {{ $barang->nama_barang }}
-                            </td>
+                            </thead>
 
-                            <td>
-                                {{ $barang->stok }}
-                            </td>
+                            <tbody>
 
-                            <td>
+                                @forelse($barangTerbaru as $barang)
 
-                                @if($barang->kondisi == 'Baik')
+                                <tr>
 
-                                    <span class="badge bg-success">
-                                        Baik
-                                    </span>
+                                    <td>
 
-                                @elseif($barang->kondisi == 'Rusak')
+                                        {{ $barang->nama_barang }}
 
-                                    <span class="badge bg-danger">
-                                        Rusak
-                                    </span>
+                                    </td>
 
-                                @else
+                                    <td>
 
-                                    <span class="badge bg-warning text-dark">
-                                        Perbaikan
-                                    </span>
+                                        {{ $barang->kategori }}
 
-                                @endif
+                                    </td>
 
-                            </td>
+                                    <td>
 
-                        </tr>
+                                        {{ $barang->stok }}
 
-                        @endforeach
+                                    </td>
 
-                    </tbody>
+                                    <td>
 
-                </table>
+                                        @if($barang->kondisi == 'Baik')
 
-            </div>
+                                            <span class="badge badge-success">
 
-            <div class="row mb-4">
+                                                Baik
 
-    <div class="col-md-6">
+                                            </span>
 
-        <div class="card shadow border-0 rounded-4">
+                                        @elseif($barang->kondisi == 'Rusak')
 
-            <div class="card-body">
+                                            <span class="badge badge-danger">
 
-                <h4 class="fw-bold mb-4">
+                                                Rusak
 
-                    Grafik Kondisi Barang
+                                            </span>
 
-                </h4>
+                                        @else
 
-                <canvas id="kondisiChart"></canvas>
+                                            <span class="badge badge-warning">
+
+                                                Perbaikan
+
+                                            </span>
+
+                                        @endif
+
+                                    </td>
+
+                                </tr>
+
+                                @empty
+
+                                <tr>
+
+                                    <td colspan="4"
+                                        class="text-center">
+
+                                        Belum ada data barang
+
+                                    </td>
+
+                                </tr>
+
+                                @endforelse
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -274,73 +325,5 @@
     </div>
 
 </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<script>
-
-const ctx = document.getElementById('kondisiChart');
-
-new Chart(ctx, {
-
-    type: 'doughnut',
-
-    data: {
-
-        labels: [
-
-            'Baik',
-            'Rusak',
-            'Perbaikan'
-
-        ],
-
-        datasets: [{
-
-            data: [
-
-                {{ $barangBaik }},
-                {{ $barangRusakChart }},
-                {{ $barangPerbaikan }}
-
-            ],
-
-            backgroundColor: [
-
-                '#198754',
-                '#dc3545',
-                '#ffc107'
-
-            ],
-
-            borderWidth: 0
-
-        }]
-
-    },
-
-    options: {
-
-        responsive: true,
-
-        plugins: {
-
-            legend: {
-
-                position: 'bottom'
-
-            }
-
-        }
-
-    }
-
-});
-
-</script>
 
 @endsection
