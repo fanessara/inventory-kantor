@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('borrowing_goods', function (Blueprint $table) {
             $table->id();
             $table->foreignId('barang_id')->constrained('items')->cascadeOnDelete();
-            $table->foreignId('peminjam_id')->constrained('borrowers')->cascadeOnDelete();
+            $table->foreignId('peminjam_id')->constrained('users')->cascadeOnDelete();
             $table->integer('jumlah_pinjam');
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali')->nullable();

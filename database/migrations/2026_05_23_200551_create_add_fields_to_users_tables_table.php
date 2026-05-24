@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // Hapus kolom email bawaan Laravel
-            $table->dropColumn(['email', 'email_verified_at']);
+            
             // Tambah kolom username
             $table->string('username')->unique()->after('name');
             // biodata peminjam
@@ -30,8 +30,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn(['jabatan', 'no_hp', 'alamat']);
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+           
+            
         });
     }
 };
