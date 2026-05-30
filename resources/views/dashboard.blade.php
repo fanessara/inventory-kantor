@@ -2,54 +2,40 @@
 
 @section('content')
 
-<div class="content-wrapper">
+<div class="container-fluid">
 
     <!-- HEADER -->
     <div class="mb-4">
 
-        <h2 class="font-weight-bold">
+        <h2 class="fw-bold">
             Dashboard Inventory Kantor
         </h2>
 
         <p class="text-muted">
-            Monitoring inventaris kantor secara realtime
+            Monitoring inventaris kantor secara Langsung
         </p>
 
     </div>
 
-    <!-- STATISTIK -->
+    <!-- CARD STATISTIK -->
     <div class="row">
 
         <!-- TOTAL BARANG -->
         <div class="col-md-3 mb-4">
 
-            <div class="card border-0 shadow-lg rounded-4">
+            <div class="card stat-card bg-blue border-0">
 
                 <div class="card-body">
 
-                    <div class="d-flex justify-content-between">
+                    <h6>Total Barang</h6>
 
-                        <div>
+                    <h2 class="fw-bold">
 
-                            <p class="text-muted mb-1">
-                                Total Barang
-                            </p>
+                        {{ $totalBarang }}
 
-                            <h2 class="font-weight-bold">
+                    </h2>
 
-                                {{ $totalBarang }}
-
-                            </h2>
-
-                        </div>
-
-                        <div class="icon-box bg-primary text-white">
-
-                            <i class="mdi mdi-cube-outline"></i>
-
-                        </div>
-
-                    </div>
+                    <i class="mdi mdi-package-variant"></i>
 
                 </div>
 
@@ -60,33 +46,19 @@
         <!-- TOTAL STOK -->
         <div class="col-md-3 mb-4">
 
-            <div class="card border-0 shadow-lg rounded-4">
+            <div class="card stat-card bg-green border-0">
 
                 <div class="card-body">
 
-                    <div class="d-flex justify-content-between">
+                    <h6>Total Stok</h6>
 
-                        <div>
+                    <h2 class="fw-bold">
 
-                            <p class="text-muted mb-1">
-                                Total Stok
-                            </p>
+                        {{ $totalStok }}
 
-                            <h2 class="font-weight-bold">
+                    </h2>
 
-                                {{ $totalStok }}
-
-                            </h2>
-
-                        </div>
-
-                        <div class="icon-box bg-success text-white">
-
-                            <i class="mdi mdi-package-variant"></i>
-
-                        </div>
-
-                    </div>
+                    <i class="mdi mdi-cube-outline"></i>
 
                 </div>
 
@@ -97,33 +69,19 @@
         <!-- BARANG RUSAK -->
         <div class="col-md-3 mb-4">
 
-            <div class="card border-0 shadow-lg rounded-4">
+            <div class="card stat-card bg-red border-0">
 
                 <div class="card-body">
 
-                    <div class="d-flex justify-content-between">
+                    <h6>Barang Rusak</h6>
 
-                        <div>
+                    <h2 class="fw-bold">
 
-                            <p class="text-muted mb-1">
-                                Barang Rusak
-                            </p>
+                        {{ $barangRusak }}
 
-                            <h2 class="font-weight-bold">
+                    </h2>
 
-                                {{ $barangRusak }}
-
-                            </h2>
-
-                        </div>
-
-                        <div class="icon-box bg-danger text-white">
-
-                            <i class="mdi mdi-alert-circle"></i>
-
-                        </div>
-
-                    </div>
+                    <i class="mdi mdi-alert-circle"></i>
 
                 </div>
 
@@ -134,33 +92,19 @@
         <!-- STOK MENIPIS -->
         <div class="col-md-3 mb-4">
 
-            <div class="card border-0 shadow-lg rounded-4">
+            <div class="card stat-card bg-orange border-0">
 
                 <div class="card-body">
 
-                    <div class="d-flex justify-content-between">
+                    <h6>Stok Menipis</h6>
 
-                        <div>
+                    <h2 class="fw-bold">
 
-                            <p class="text-muted mb-1">
-                                Stok Menipis
-                            </p>
+                        {{ $stokMenipis }}
 
-                            <h2 class="font-weight-bold">
+                    </h2>
 
-                                {{ $stokMenipis }}
-
-                            </h2>
-
-                        </div>
-
-                        <div class="icon-box bg-warning text-white">
-
-                            <i class="mdi mdi-alert"></i>
-
-                        </div>
-
-                    </div>
+                    <i class="mdi mdi-alert"></i>
 
                 </div>
 
@@ -176,22 +120,26 @@
         <!-- TOTAL PEMINJAMAN -->
         <div class="col-md-4 mb-4">
 
-            <div class="card border-0 shadow-lg rounded-4">
+            <div class="card dashboard-card">
 
                 <div class="card-body">
 
-                    <h5 class="mb-3">
+                    <h5 class="fw-bold mb-3">
+
                         Total Peminjaman
+
                     </h5>
 
-                    <h1 class="font-weight-bold text-primary">
+                    <h1 class="fw-bold text-primary">
 
                         {{ $totalPeminjaman }}
 
                     </h1>
 
-                    <p class="text-muted">
-                        Total aktivitas peminjaman barang
+                    <p class="text-muted mb-0">
+
+                        Total aktivitas peminjaman barang inventaris
+
                     </p>
 
                 </div>
@@ -203,18 +151,20 @@
         <!-- BARANG TERBARU -->
         <div class="col-md-8 mb-4">
 
-            <div class="card border-0 shadow-lg rounded-4">
+            <div class="card dashboard-card">
 
                 <div class="card-body">
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
 
-                        <h5 class="mb-0">
+                        <h5 class="fw-bold mb-0">
+
                             Barang Terbaru
+
                         </h5>
 
                         <a href="/barang"
-                           class="btn btn-sm btn-primary">
+                           class="btn btn-primary btn-sm">
 
                             Lihat Semua
 
@@ -224,7 +174,7 @@
 
                     <div class="table-responsive">
 
-                        <table class="table table-hover">
+                        <table class="table table-hover align-middle">
 
                             <thead>
 
@@ -247,7 +197,11 @@
 
                                     <td>
 
-                                        {{ $barang->nama_barang }}
+                                        <div class="fw-bold">
+
+                                            {{ $barang->nama_barang }}
+
+                                        </div>
 
                                     </td>
 
@@ -267,7 +221,7 @@
 
                                         @if($barang->kondisi == 'Baik')
 
-                                            <span class="badge badge-success">
+                                            <span class="badge bg-success">
 
                                                 Baik
 
@@ -275,7 +229,7 @@
 
                                         @elseif($barang->kondisi == 'Rusak')
 
-                                            <span class="badge badge-danger">
+                                            <span class="badge bg-danger">
 
                                                 Rusak
 
@@ -283,7 +237,7 @@
 
                                         @else
 
-                                            <span class="badge badge-warning">
+                                            <span class="badge bg-warning text-dark">
 
                                                 Perbaikan
 
@@ -300,7 +254,7 @@
                                 <tr>
 
                                     <td colspan="4"
-                                        class="text-center">
+                                        class="text-center text-muted">
 
                                         Belum ada data barang
 

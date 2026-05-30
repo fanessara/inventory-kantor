@@ -17,7 +17,7 @@
             </p>
 
         </div>
-
+@if(auth()->user()->role == 'admin')
         <a href="/barang/create"
            class="btn btn-primary">
 
@@ -27,6 +27,10 @@
 
         </a>
 
+@endif        
+
+@if(auth()->user()->role == 'admin')
+
         <a href="/barang-pdf"
    class="btn btn-danger ml-2">
 
@@ -35,6 +39,8 @@
     Export PDF
 
 </a>
+
+@endif
 
     </div>
 
@@ -144,6 +150,7 @@
                         <tr>
 
                             <th>No</th>
+                            <th>Gambar</th>
                             <th>Kode</th>
                             <th>Nama Barang</th>
                             <th>Kategori</th>
@@ -164,17 +171,36 @@
 
                         <tr>
 
-                            <td>
+                           <td>
 
-                                {{ $loop->iteration }}
+    {{ $loop->iteration }}
 
-                            </td>
+</td>
 
-                            <td>
+<td>
 
-                                {{ $barang->kode_barang }}
+    @if($barang->gambar)
 
-                            </td>
+        <img src="{{ asset('gambar_barang/' . $barang->gambar) }}"
+             width="70"
+             height="70"
+             style="object-fit: cover; border-radius: 10px;">
+
+    @else
+
+        <span class="text-muted">
+            Tidak ada gambar
+        </span>
+
+    @endif
+
+</td>
+
+<td>
+
+    {{ $barang->kode_barang }}
+
+</td>
 
                             <td>
 
@@ -249,33 +275,41 @@
                                     </a>
 
                                     <!-- EDIT -->
-                                    <a href="/barang/{{ $barang->id }}/edit"
-                                       class="btn btn-warning btn-sm me-2">
+                                   @if(Auth::user()->role == 'admin')
 
-                                        <i class="mdi mdi-pencil"></i>
+<a href="/barang/{{ $barang->id }}/edit"
+   class="btn btn-warning btn-sm me-2">
 
-                                        Edit
+    <i class="mdi mdi-pencil"></i>
 
-                                    </a>
+    Edit
+
+</a>
+
+@endif
 
                                     <!-- DELETE -->
-                                    <form action="/barang/{{ $barang->id }}"
-                                          method="POST">
+                                   @if(Auth::user()->role == 'admin')
 
-                                        @csrf
-                                        @method('DELETE')
+<form action="/barang/{{ $barang->id }}"
+      method="POST">
 
-                                        <button type="submit"
-                                                class="btn btn-danger btn-sm"
-                                                onclick="return confirm('Hapus barang ini?')">
+    @csrf
+    @method('DELETE')
 
-                                            <i class="mdi mdi-delete"></i>
+    <button type="submit"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Hapus barang ini?')">
 
-                                            Hapus
+        <i class="mdi mdi-delete"></i>
 
-                                        </button>
+        Hapus
 
-                                    </form>
+    </button>
+
+</form>
+
+@endif
 
                                 </div>
 

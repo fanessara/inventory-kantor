@@ -30,7 +30,9 @@
 
         <div class="card-body">
 
-            <form action="/barang/store" method="POST">
+            <form action="{{ route('barang.store') }}"
+                 method="POST"
+                enctype="multipart/form-data">
 
                 @csrf
 
@@ -147,6 +149,38 @@
 
                     </div>
 
+                    <!-- GAMBAR -->
+<div class="col-md-12">
+
+    <div class="form-group">
+
+        <label>Upload Gambar Barang</label>
+
+        <input type="file"
+               name="gambar"
+               class="form-control"
+               onchange="previewImage(event)">
+
+        <small class="text-muted">
+            Format JPG, PNG, JPEG
+        </small>
+
+        <!-- PREVIEW -->
+        <div class="mt-3">
+
+            <img id="preview"
+                 src=""
+                 style="max-width:250px;
+                        border-radius:15px;
+                        display:none;
+                        box-shadow:0 5px 15px rgba(0,0,0,0.1);">
+
+        </div>
+
+    </div>
+
+</div>
+
                     <!-- DESKRIPSI -->
                     <div class="col-md-12">
 
@@ -180,5 +214,19 @@
     </div>
 
 </div>
+
+<script>
+
+function previewImage(event){
+
+    const image = document.getElementById('preview');
+
+    image.src = URL.createObjectURL(event.target.files[0]);
+
+    image.style.display = 'block';
+
+}
+
+</script>
 
 @endsection

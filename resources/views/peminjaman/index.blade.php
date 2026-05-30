@@ -22,12 +22,16 @@
 
                 </div>
 
+                @if(auth()->user()->role == 'admin')
+
                 <a href="/peminjaman/create"
                    class="btn btn-primary">
 
                     + Tambah Peminjaman
 
                 </a>
+
+                @endif
 
             </div>
 
@@ -139,28 +143,40 @@
 
                             <td>
 
-                                @if($item->status == 'Dipinjam')
+                                @if(auth()->user()->role == 'admin')
 
-                                    <form action="/peminjaman/{{ $item->id }}"
-                                          method="POST">
+                                    @if($item->status == 'Dipinjam')
 
-                                        @csrf
-                                        @method('PUT')
+                                        <form action="/peminjaman/{{ $item->id }}"
+                                              method="POST">
 
-                                        <button type="submit"
-                                                class="btn btn-success btn-sm">
+                                            @csrf
+                                            @method('PUT')
 
-                                            Kembalikan
+                                            <button type="submit"
+                                                    class="btn btn-success btn-sm">
 
-                                        </button>
+                                                Kembalikan
 
-                                    </form>
+                                            </button>
+
+                                        </form>
+
+                                    @else
+
+                                        <span class="text-success fw-bold">
+
+                                            Selesai
+
+                                        </span>
+
+                                    @endif
 
                                 @else
 
-                                    <span class="text-success fw-bold">
+                                    <span class="text-muted">
 
-                                        Selesai
+                                        Tidak tersedia
 
                                     </span>
 
