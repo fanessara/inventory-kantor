@@ -33,7 +33,7 @@
 
                 <div class="row">
 
-                    <!-- KODE BARANG -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -50,7 +50,7 @@
 
                     </div>
 
-                    <!-- NAMA BARANG -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -67,7 +67,7 @@
 
                     </div>
 
-                    <!-- KATEGORI -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -84,7 +84,7 @@
 
                     </div>
 
-                    <!-- RUANGAN -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -101,7 +101,7 @@
 
                     </div>
 
-                    <!-- STOK -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -118,7 +118,7 @@
 
                     </div>
 
-                    <!-- KONDISI -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -150,7 +150,7 @@
 
                     </div>
 
-                    <!-- DESKRIPSI -->
+                    
                     <div class="col-md-12">
 
                         <div class="form-group">
@@ -166,7 +166,7 @@
 
                     </div>
 
-                    <!-- GAMBAR -->
+                    
                     <div class="col-md-12">
 
                         <div class="form-group">
@@ -203,7 +203,7 @@
 
                 </div>
 
-                <!-- BUTTON -->
+                
                 <div class="mt-4 d-flex">
 
                     <button type="submit"

@@ -114,10 +114,10 @@
 
     </div>
 
-    <!-- ROW KEDUA -->
+    
     <div class="row">
 
-        <!-- TOTAL PEMINJAMAN -->
+        
         <div class="col-md-4 mb-4">
 
             <div class="card dashboard-card">
@@ -148,7 +148,7 @@
 
         </div>
 
-        <!-- BARANG TERBARU -->
+        
         <div class="col-md-8 mb-4">
 
             <div class="card dashboard-card">

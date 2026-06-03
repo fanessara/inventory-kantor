@@ -541,6 +541,38 @@
 
         }
 
+        .register-link{
+
+    text-align:center;
+
+    margin-top:20px;
+
+    color:#64748b;
+
+    font-size:15px;
+
+}
+
+.register-link a{
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    color:#5D87AD;
+
+    transition:.3s;
+
+}
+
+.register-link a:hover{
+
+    color:#3f6f99;
+
+    text-decoration:underline;
+
+}
+
     </style>
 
 </head>
@@ -626,6 +658,16 @@
                 Login Sekarang
 
             </button>
+
+            <div class="register-link">
+
+    Belum punya akun?
+
+    <a href="{{ route('register') }}">
+        Daftar
+    </a>
+
+</div>
 
         </form>
 

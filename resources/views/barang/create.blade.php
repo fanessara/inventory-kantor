@@ -38,7 +38,7 @@
 
                 <div class="row">
 
-                    <!-- KODE -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -54,7 +54,7 @@
 
                     </div>
 
-                    <!-- NAMA -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -70,7 +70,7 @@
 
                     </div>
 
-                    <!-- KATEGORI -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -86,7 +86,7 @@
 
                     </div>
 
-                    <!-- RUANGAN -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -96,13 +96,13 @@
                             <input type="text"
                                    name="ruangan"
                                    class="form-control"
-                                   placeholder="Contoh: Ruang IT">
+                                   placeholder="Contoh: R01">
 
                         </div>
 
                     </div>
 
-                    <!-- STOK -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -118,7 +118,7 @@
 
                     </div>
 
-                    <!-- KONDISI -->
+                    
                     <div class="col-md-6">
 
                         <div class="form-group">
@@ -128,7 +128,7 @@
                             <select name="kondisi" class="form-control">
 
                                 <option value="">
-                                    -- Pilih Kondisi --
+                                     Pilih Kondisi 
                                 </option>
 
                                 <option value="Baik">
@@ -149,7 +149,7 @@
 
                     </div>
 
-                    <!-- GAMBAR -->
+                    
 <div class="col-md-12">
 
     <div class="form-group">
@@ -165,7 +165,7 @@
             Format JPG, PNG, JPEG
         </small>
 
-        <!-- PREVIEW -->
+        
         <div class="mt-3">
 
             <img id="preview"
@@ -181,7 +181,7 @@
 
 </div>
 
-                    <!-- DESKRIPSI -->
+                    
                     <div class="col-md-12">
 
                         <div class="form-group">
